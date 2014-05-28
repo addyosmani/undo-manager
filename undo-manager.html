@@ -1,0 +1,190 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="undo.html">
+
+<!--
+Element providing undo/redo capabilities using Mutation Observers
+
+##### Examples
+
+    <undo-manager>
+      <div id="text" contenteditable="true"></div>
+    </undo-manager>
+
+    <undo-manager>
+      <ul id="todos">
+        <li>Todos you add will support Undo/Redo</li>
+      </ul>
+    </undo-manager>
+
+@element undo-manager
+@blurb Element providing undo/redo capabilities using Mutation Observers.
+@status alpha
+@homepage http://addyosmani.github.io/undo-manager
+-->
+<polymer-element name="undo-manager" attributes="overrideSelector">
+
+  <template>
+
+    <link rel="stylesheet" href="undo-manager.css" />
+    
+    <button id="undo" on-click="{{undoAction}}" href="#">Undo</button>
+    <button id="redo" on-click="{{redoAction}}"  href="#">Redo</button>
+    <button id="save" on-click="{{saveAction}}"  href="#">Save<span id="dirty">*</span></button>
+
+    <!--The element to track changes on and undo/redo-->
+    <content id="k"></content>
+
+  </template>
+
+  <script>
+
+    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+
+    Polymer('undo-manager', {
+      /**
+       * The `activeElement` property specifies the element to observe
+       * 
+       * @property activeElement
+       * @type DOMElement
+       */
+      activeElement: '',
+
+      /**
+       * `overrideSelector` attribute is a selector to use instead of the immediate child
+       * 
+       * @attribute overrideSelector
+       * @type string
+       */
+      overrideSelector: '',
+
+      /**
+       * `blocked` is a property that specifies whether Undo/Redo is blocked
+       * 
+       * @property blocked
+       * @type bool
+       */
+      blocked: false,
+
+      /**
+       * `observer` is a property that points to the current active observer
+       * 
+       * @property observer
+       * @type observer
+       */
+      observer: null,
+
+      /**
+       * `startValue` is a property specifying the starting value for an elements contents
+       * 
+       * @property startValue
+       * @type string
+       */
+      startValue: '',
+
+      stack: null,
+
+      ready: function() {
+
+        var blocked = this.blocked;
+        // Due to issues with Mutation observing distributed nodes
+        // Get the nodeName of the primary node of interest and 
+        // querySelect it within the scope of this doc
+        
+        if (this.overrideSelector){
+          this.activeElement = document.querySelector(this.overrideSelector);
+        }else {
+          this.activeElement = document.querySelector(this.$.k.getDistributedNodes()[0].nodeName);
+        }
+        this.startValue = this.activeElement.innerHTML;
+        this.observer = new MutationObserver(function (mutations) {
+            if (!blocked) {
+                var newValue = this.activeElement.innerHTML;
+                this.stack.execute(new this.EditCommand(this.activeElement, this.startValue, newValue));
+                this.startValue = newValue;
+                blocked = false;
+            }
+        }.bind(this));
+
+        this.observer.observe(this.activeElement, {
+            attributes: true,
+            childList: true,
+            characterData: true,
+            characterDataOldValue: true,
+            subtree: true
+        });
+
+        this.stack = new Undo.Stack();
+        this.EditCommand = Undo.Command.extend({
+            constructor: function (el, oldValue, newValue) {
+                this.el = el;
+                this.oldValue = oldValue;
+                this.newValue = newValue;
+            },
+            execute: function () {},
+            undo: function () {
+                blocked = true;
+                this.el.innerHTML = this.oldValue;
+            },
+
+            redo: function () {
+                blocked = true;
+                this.el.innerHTML = this.newValue;
+            }
+        });   
+
+        this.stack.changed = function () {
+            this.stackUI();
+        }.bind(this);     
+
+        this.stackUI();        
+      },
+
+      /**
+       * The `undoAction` method will Undo the last change
+       * 
+       * @method undoAction
+       */
+      undoAction: function() {
+        this.stack['undo']();
+        return false;
+      },
+
+
+      /**
+       * The `redoAction` method will Redo the last change
+       * 
+       * @method redoAction
+       */
+      redoAction: function() {
+        this.stack['redo']();
+        return false;
+      },
+
+
+      /**
+       * The `saveAction` method will save the current state
+       * 
+       * @method saveAction
+       */
+      saveAction: function() {
+        this.stack['save']();
+        return false;
+      },
+
+      /**
+       * The `stackUI` method will update undo manager UI controls
+       * based on the editing state of the element
+       * 
+       * @method stackUI
+       */
+      stackUI: function(){
+        !this.stack.canUndo()? this.$.undo.disabled = true : this.$.undo.disabled = false;
+        !this.stack.canRedo()? this.$.redo.disabled = true : this.$.redo.disabled = false;
+        this.stack.dirty()? this.$.dirty.style.display = 'none': 'block';
+      },
+
+    });
+
+  </script>
+
+</polymer-element>
