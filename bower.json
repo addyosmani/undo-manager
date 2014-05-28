@@ -1,14 +1,14 @@
 {
-  "name": "seed-element",
-  "version": "0.0.0",
+  "name": "undo-manager",
+  "version": "0.0.1",
   "authors": [
     "Anonymous <anonymous@example.com>"
   ],
-  "description": "Element providing solution to no problem in particular.",
-  "keywords": "seed, polymer, web-components",
-  "main": "seed-element.html",
+  "description": "Element enabling Undo/Redo transactions on DOM elements",
+  "keywords": "undo, redo, polymer, web-components",
+  "main": "undo-manager.html",
   "license": "MIT",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "homepage": "https://github.com/addyosmani/undo-manager/",
   "ignore": [
     "**/.*"
   ],
