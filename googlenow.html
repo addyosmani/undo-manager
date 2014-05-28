@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>undo-manager Demo</title>
+
+  <script src="../platform/platform.js"></script>
+  <link rel="stylesheet" href="googlenow.css">
+  <link rel="import" href="undo-manager.html">
+  <style>
+    @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,700,500italic,900,700italic,900italic);
+    body { font:62.5% Verdana,Arial,sans-serif; }
+    .card { display:none; }
+    .active { display:block;}
+  </style>
+
+</head>
+<body unresolved>
+
+  <p>An example of using <code>&lt;undo-manager></code>:</p>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+      var x = document.querySelector.bind(document);
+      var text = x("#view");
+      var cards = document.querySelectorAll(".card");
+
+      for(i=0; i<cards.length; i++){
+        cards[i].addEventListener('click', nextCard, false);
+      }
+
+      function nextCard(){
+        this.style.display = 'none';
+        this.nextElementSibling.style.display = 'block';
+      }
+
+  });
+  </script>
+
+  <undo-manager overrideSelector="#view">
+    <div id="view">
+      <section class="card active">
+        <h1>Lunch with Paul @ 12</h1>
+        <h2>Sodding Lane</h2>
+        <div class="lunch"></div>
+        <span class="blue  icon-bullhorn"></span> <span class="blue">Remind me to insult him</span><hr>
+        <span class="blue  icon-location-arrow"></span> <span class="blue">Directions to Sodding Lane</span> 
+      </section>
+      
+      <section class="card action">
+        <h1>Watch now<span class="blue">*</span></h1>
+        <h2>Burn Notice, Futurama, The Big Bang Theory, Wheel of Fortune, and more on TV and video on demand</h2>
+        <div class="images">
+          <img src="http://www.labs.oceanicviewstudios.com/now/img/burnnotice.jpg"> <img src="http://www.labs.oceanicviewstudios.com/now/img/futurama.jpg"> <img src="http://www.labs.oceanicviewstudios.com/now/img/bigbangtheory.jpg"> <img src="http://www.labs.oceanicviewstudios.com/now/img/wheeloffortune.jpg">
+        </div>
+      </section>
+
+      <section class="card">
+        <h1>geek<span class="blue">*</span></h1>
+        <h2>/gēk/</h2>
+        <h2><span class="italic">noun <span class="gy-title">informal</span></span></h2>
+        <ol>
+          <li>an unfashionable or socially inept person.</li>
+          <li>a cernical performer who performs wild or disgusting acts.
+        </ol>
+      </section>
+
+      <section class="card">
+        <h1>Apologize to Paul @ 3pm</h1>
+        <h2>Micro-kitchen</h2>
+        <div class="coffee"></div>
+        <span class="blue  icon-bullhorn"></span> <span class="blue">Remind me to be gentle</span><hr>
+        <span class="blue  icon-location-arrow"></span> <span class="blue">Directions to Micro-kitchen</span> 
+      </section>
+
+      <section class="card info">
+        <h2>Shipped <span class="gy-title"> - 30 minutes ago</span><span class="blue">*</span></h2>
+        <h1>Canon EOS Rebel T4i...</h1><hr>
+        <span class="blue">Shipping Details</span><hr>
+        <span class="blue">View Email</span>
+      </section>
+        
+      <section class="card ">
+        <h1 class="g-title">Package shipped<span class="blue">*</span></h1>
+        <h2>5:26pm Thursday August 10</h2><br>
+        <h2 class="gy-title">Iron Marn 2 (Three-Disk Blu-ray/DVD Combo)<br>Prometheus (Blu-ray/DVD + Digital Copy...)</h2><br>
+        <h2 class="gy-title">From:</h2><hr>
+        <span class="blue icon-globe"></span> <span class="blue">Track Package</span><hr>
+        <span class="blue icon-envelope"></span> <span class="blue">View Email</span>
+      </section>
+
+      <section class="card">
+        <h1>Latest Transactions<span class="blue">*</span></h1><hr>
+        <h2>Organic Groceries #1123</h2><hr>
+        <h2>Add to Wallet Balance</h2><hr>
+        <h2>Money Sent to Elise Ryan</h2><hr>
+        <h2 class="blue">View all transactions</h2>
+      </section>
+     
+       <section class="card">
+        <h1>Trip to Italy<span class="blue">*</span></h1>
+        <div class="images">
+          <img src="http://www.labs.oceanicviewstudios.com/now/img/burnnotice.jpg"> <img src="http://www.labs.oceanicviewstudios.com/now/img/futurama.jpg"> <img src="http://www.labs.oceanicviewstudios.com/now/img/bigbangtheory.jpg"> <img src="http://www.labs.oceanicviewstudios.com/now/img/wheeloffortune.jpg">
+        </div><br>
+        <h2>Continue your research</h2><hr>
+        <h2 class="gy-title">A beginner's guide to train travel in Italy, including trains between Rome, Venice...</h2>
+        <h2 class="g-title">trips2italy.com</h2><hr>
+        <h2 class="gy-title">Rental Bike Venice, Colosseum, Pantheon, Trevi Fountain, St Peter's Basilica...</h2>
+        <h2 class="g-title">lonelyplanet.com</h2><hr>
+        <span class="blue icon-globe"></span> <span class="blue">Explore more</span>
+      </section>
+
+      <!-- Real Estate -->
+      <section class="card">
+        <h1>Properties in New York, NY<span class="blue">*</span></h1>
+        <h2>Continue your real estate research</h2>
+        <span class="blue">Show more homes for sale</span>
+      </section>
+        
+      <section class="card">
+        <h1>1787 Garden Walk APT 101<span class="blue">*</span></h1>
+        <h2>New York, NY 10035</h2>
+        <span class="g-title">Next open house</span> <span class="gy-title">- Sat 12th June 12 - 2pm</span>
+      </section>
+
+      <section class="card">
+        <h1>You are out of cards, bro.</h1>
+      </section>
+
+    </div>
+  </undo-manager>
+
+</body>
+</html>
