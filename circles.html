@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>undo-manager Demo</title>
+
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="undo-manager.html">
+  <style>
+    body { font:62.5% Verdana,Arial,sans-serif; }
+    #text { padding: 40px; }
+    .circle {
+      width: 200px;
+      height: 200px;
+      border: yellow;
+      border-radius: 100px;
+    }
+  </style>
+
+</head>
+<body unresolved>
+
+  <p>An example of using <code>&lt;undo-manager></code>:</p>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+      var x = document.querySelector.bind(document);
+      var add = x(".add");
+
+      add.addEventListener("click", function () {
+        var colors = ['blue', 'yellow', 'magenta', 'green', 'cyan', 'bisque', 'gold', 'dodgerblue', 'lightpink', 'lavender', 'gray', 'firebrick'];
+        var color = colors[Math.floor(Math.random()*colors.length)];
+        var left = Math.floor(Math.random()*900) + 'px';
+        var top = Math.floor(Math.random()*600) + 'px';
+          text.innerHTML+= '<div class="circle" style="' + 'position:absolute;left:' + left + ';top:' + top +';background:' + color + '"' + '></div>';
+          return false;
+      });
+  });
+  </script>
+
+  <button class="add" href="#">Add Circle</button>
+  
+  <undo-manager>
+    <div id="text">
+      Click 'Add Circle' to add some circles.
+    </div>
+  </undo-manager>
+
+</body>
+</html>
