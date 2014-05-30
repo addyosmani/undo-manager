@@ -180,8 +180,8 @@ Element providing undo/redo capabilities using Mutation Observers
        * @method stackUI
        */
       stackUI: function () {
-        !this.stack.canUndo() ? this.$.undo.disabled = true : this.$.undo.disabled = false;
-        !this.stack.canRedo() ? this.$.redo.disabled = true : this.$.redo.disabled = false;
+        this.$.redo.disabled = !this.stack.canRedo();
+        this.$.undo.disabled = !this.stack.canUndo();
         this.stack.dirty() ? this.$.dirty.style.display = 'none': 'block';
       },
 
