@@ -19,7 +19,7 @@ Element providing undo/redo capabilities using Mutation Observers
 @element undo-manager
 @blurb Element providing undo/redo capabilities using Mutation Observers.
 @status alpha
-@homepage http://addyosmani.github.io/undo-manager
+@homepage http://github.com/addyosmani/undo-manager
 -->
 <polymer-element name="undo-manager" attributes="overrideSelector">
 
@@ -29,7 +29,9 @@ Element providing undo/redo capabilities using Mutation Observers
 
     <button id="undo" on-click="{{undoAction}}" href="#">Undo</button>
     <button id="redo" on-click="{{redoAction}}"  href="#">Redo</button>
+    <!--
     <button id="save" on-click="{{saveAction}}"  href="#">Save<span id="dirty">*</span></button>
+     -->
 
     <!--The element to track changes on and undo/redo-->
     <content id="k"></content>
@@ -182,7 +184,8 @@ Element providing undo/redo capabilities using Mutation Observers
       stackUI: function () {
         this.$.redo.disabled = !this.stack.canRedo();
         this.$.undo.disabled = !this.stack.canUndo();
-        this.stack.dirty() ? this.$.dirty.style.display = 'none': 'block';
+        // TODO: Fix Save sate 
+        // this.stack.dirty() ? this.$.dirty.style.display = 'none': 'block';
       },
 
     });
