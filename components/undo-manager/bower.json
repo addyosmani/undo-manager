@@ -1,0 +1,21 @@
+{
+  "name": "undo-manager",
+  "version": "0.0.1",
+  "authors": [
+    "Anonymous <anonymous@example.com>"
+  ],
+  "description": "Element enabling Undo/Redo transactions on DOM elements",
+  "keywords": "undo, redo, polymer, web-components",
+  "main": "undo-manager.html",
+  "license": "MIT",
+  "homepage": "https://github.com/addyosmani/undo-manager/",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.2.4",
+    "chai": "~1.9.1",
+    "mocha": "~1.19.0",
+    "undo": "jzaefferer/undo"
+  }
+}

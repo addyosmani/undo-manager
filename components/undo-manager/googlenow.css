@@ -1,0 +1,404 @@
+* { font-family: 'Roboto', sans-serif; line-height:1.2; vertical-align:middle;}
+
+body { background:#e5e5e5; color:gray; }
+
+p {
+  color:gray;
+  font-size:.9rem;
+  font-weight:400;
+}
+
+#view {
+  background:#e5e5e5;
+  display:block;
+  margin:3vh auto;
+  overflow:hidden;
+  padding:1.5rem 0 0;
+  position:relative;
+  width:30rem;
+}
+
+header {
+  background:url(http://www.droid-life.com/wp-content/uploads/2013/01/googlenownewyork.png) center center;
+  background-size:cover;
+  height:10rem;
+  position:absolute;
+  top:0; left:0; right:0;
+  transition:transform .5s, opacity .3s;
+  z-index:0;
+}
+
+
+input, .card {
+  position:relative;
+  z-index:2;
+}
+
+input {
+  border:0;
+  border-radius:3px;
+  box-shadow:0 1px 2px #aaa;
+  display:block;
+  font-size:1.2rem;
+  font-weight:300;
+  margin:4.5rem 1rem 2rem;
+  padding:.75rem 1rem;
+  transition:.5s, margin-bottom .15s;
+  width:26rem;
+}
+
+input:focus {
+  margin:0 1rem 1rem;
+  outline:0;
+}
+
+input:focus + header {
+  transform:translate3d(0,-10rem,0);
+  opacity:0;
+}
+
+.leftof {
+  float: left;
+  padding: 0 15px 0 0;
+}
+
+.rightof {
+  float: right;
+}
+
+hr {
+  background: #f3f3f3; 
+  border: none; 
+  clear: both; 
+  float: none;
+  height: 1px;
+  width: 100%; 
+}
+
+/* Alignment */
+.align-center {
+  text-align: center;
+}
+
+.img-align-c {
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-justify {
+  text-align: justify;
+}
+
+.card {
+  -webkit-animation:fly-in-from-left .3s ease both;
+  animation:fly-in-from-left .3s ease both;
+  background:white;
+  border-radius:3px;
+  box-shadow:0 1px 2px #aaa;
+  margin:0 1rem 1rem;
+  padding:1rem 1rem 1.5rem 1.5rem;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+  -webkit-transform-origin:top left;
+  transform-origin:top left;
+}
+.card:nth-child(even){
+  -webkit-animation-delay:.3s;
+  animation-delay:.3s;
+  -webkit-animation-name:fly-in-from-right;
+  animation-name:fly-in-from-right;
+  -webkit-transform-origin:top right;
+  transform-origin:top right;
+}
+
+@-webkit-keyframes fly-in-from-left {
+  from {
+    -webkit-transform:translateY(15rem) rotate(15deg);
+    transform:translateY(15rem) rotate(15deg);
+    opacity:0;
+  }
+}
+
+@keyframes fly-in-from-left {
+  from {
+    -webkit-transform:translateY(15rem) rotate(15deg);
+    transform:translateY(15rem) rotate(15deg);
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fly-in-from-right {
+  from {
+    -webkit-transform:translateY(15rem) rotate(-15deg);
+    transform:translateY(15rem) rotate(-15deg);
+    opacity:0;
+  }
+}
+
+@keyframes fly-in-from-right {
+  from {
+    -webkit-transform:translateY(15rem) rotate(-15deg);
+    transform:translateY(15rem) rotate(-15deg);
+    opacity:0;
+  }
+}
+
+.action:after {
+  border-radius:50%;
+  color:gray;
+  content:"\f142";
+  font-family: FontAwesome;
+  font-size:.9rem;
+  line-height:1rem;
+  pointer-events:none;
+  position:absolute;
+  text-align:center;
+  top:1.5rem; right:1rem;
+  width:1rem;
+}
+
+.info:after {
+  border: 1px solid;
+  border-radius:50%;
+  color:gray;
+  content:"\f129";
+  font-family: FontAwesome;
+  font-size:.6rem;
+  line-height:1rem;
+  pointer-events:none;
+  position:absolute;
+  text-align:center;
+  top:1.5rem; right:1rem;
+  width:1rem;
+}
+
+
+h1 {
+  color: #707070;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2.4rem;
+  margin: 0;
+}
+
+h2 {
+  font-size:.9rem;
+  color:gray;
+  font-weight:400;
+  line-height: 1.250rem;
+  margin: 0;
+}
+
+.bold {
+  font-weight: 400;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* Colors */
+.r-title {
+  color: #ff4444;
+}
+
+.o-title {
+  color: #ff8800;
+}
+
+.g-title {
+  color: #70ae32;
+}
+
+.red {
+  color: #c2384f;
+}
+
+.green {
+  color: #70ae32;
+}
+
+.l-green {
+  color: #99cc00;
+}
+
+.blue {
+  color: #27b3dd;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.gy-title {
+  color: #c6c6c6;
+}
+
+.description {
+  color: #c6c6c6;
+  font-style: italic;
+}
+
+span.offset {
+  margin-left: 65px;
+}
+
+.center {
+  text-align: center;
+}
+
+.x-large {
+  font-size: 2rem;
+  margin: 25px 0 0 0;
+}
+
+.images {
+  background: #f0f0f0;
+  border-color: #f0f0f0;
+  border-style: solid;
+  border-width: 1px 0;
+  height: 145px;
+  margin: 16px -16px 0 0;
+  overflow: hidden;
+  width: 400px;
+}
+
+.images img {
+float: left;
+height: 145px;
+}
+
+/* Grid boundary for all layouts. */
+[class^="layout-"] {
+  position: relative;
+  left: -29px;
+  right: 29px;
+  width: 618px;
+  height: 100%;
+  overflow: hidden;
+}
+
+[class^="layout-"]:after {
+  clear: both;
+}
+
+/* Div padding and borders for all layouts. */
+[class^="layout-"] > div {
+  float: left;
+  height: 100%;
+  padding: 10px 29px 10px 30px;
+  border-right: 1px solid #f3f3f3;
+  overflow: hidden;
+}
+
+[class^="layout-"] > div:last-child {
+  border-right: none;
+  padding-right: 30px;
+}
+
+/* Allow the borders to be suppressed */
+[class^="layout-"].no-border > div {
+  border-right: none;
+  padding-right: 30px;
+}
+
+/* Layout with 2 equally-sized columns. */
+.layout-two-column > div {
+  width: 160px;
+}
+
+.birthday{
+  background-image:url(http://i.imgur.com/S08LqoZ.png);
+  height:12rem;
+  margin:.5rem 0 0 -1.5rem;
+  width:28rem;
+}
+
+.map {
+  background-image: url(http://i.imgur.com/D6ravs9.png);
+  height:12rem;
+  margin:.5rem 0 1.5rem -1.5rem;
+  width:28rem;
+}
+
+.storm {
+  background-image: url(http://i.imgur.com/N6QCJE2.png);
+  height:12rem;
+  margin:.5rem 0 1.5rem -1.5rem;
+  width:28rem;
+}
+
+.hotel {
+  background-image: url(http://i.imgur.com/E31pRwG.png);
+  height:12rem;
+  margin:.5rem 0 1.5rem -1.5rem;
+  width:28rem;
+}
+
+.lunch {
+  background-image: url(http://i.imgur.com/RnYg59q.jpg);
+  background-size: cover;
+  height:12rem;
+  margin:.5rem 0 1.5rem -1.5rem;
+  width:28rem;
+}
+
+.coffee {
+  background-image: url(http://i.imgur.com/aCAcgRn.jpg);
+  background-size: cover;
+  height:12rem;
+  margin:.5rem 0 1.5rem -1.5rem;
+  width:28rem;
+}
+
+
+.work {
+  background-image: url(http://i.imgur.com/CT7dzFK.jpg);
+  height:12rem;
+  margin:.5rem 0 1.5rem -1.5rem;
+  width:28rem;
+}
+
+.left {
+  background-image: url(http://i.imgur.com/CdGPsgl.jpg);
+  height:12rem;
+  margin:.5rem 0 0 -1.5rem;
+  width:28rem;
+}
+
+.question {
+  background-color: #5cc5ec;
+  color: #fff;
+  font-style:italic;
+  height:6rem;
+  margin:0 0 0 -1.5rem;
+  padding: 25px 0 0 10px;
+  width:27.4rem;
+}
+
+.question:after {
+  border-color: transparent transparent #5cc5ec transparent;
+  border-style: solid;
+  border-width: 10px; 
+  content:'';
+  display:block;
+  position:absolute;
+  top:277px; left:400px;
+  width:0;
+  height:0;
+}
+
+* {
+  font-size: 1.1em;
+}

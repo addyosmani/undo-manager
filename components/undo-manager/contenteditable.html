@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>undo-manager Demo</title>
+
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="undo-manager.html">
+  <style>
+  #text {
+    padding-top: 50px;
+  }
+  * {
+    font-size: 1.1em;
+    font-family: 'Roboto';
+  }
+  undo-manager /deep/ button {
+    font-size: 1.3em;
+  }
+  </style>
+
+</head>
+<body unresolved>
+
+  <p>An example of using <code>&lt;undo-manager></code>:</p>
+
+  <undo-manager>
+    <div id="text" contenteditable="true"></div>
+  </undo-manager>
+
+</body>
+</html>
